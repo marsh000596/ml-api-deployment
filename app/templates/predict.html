@@ -1,0 +1,24 @@
+<!-- templates/predict.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 40px; background: #f7f7f7; }
+        .result { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 400px; margin: auto; text-align: center; }
+        h2 { color: #444; }
+        a { display: inline-block; margin-top: 20px; text-decoration: none; color: #1e90ff; }
+    </style>
+</head>
+<body>
+    <div class="result">
+        {% if prediction %}
+            <h2>Prediction: {{ prediction }}</h2>
+        {% endif %}
+        {% if error %}
+            <p style="color:red;">Error: {{ error }}</p>
+        {% endif %}
+        <a href="/">Make Another Prediction</a>
+    </div>
+</body>
+</html>

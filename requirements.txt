@@ -1,0 +1,11 @@
+fastapi==0.111.0
+uvicorn==0.30.1
+scikit-learn==1.5.0
+joblib==1.4.2
+pydantic==2.7.1
+pytest==8.2.2
+scikit-learn
+jinja2
+joblib==1.4.2
+python-dotenv==1.0.1  # for loading env variables
+

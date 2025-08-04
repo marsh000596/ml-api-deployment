@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>⚡ ML Prediction Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3b47, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 520px;
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: #66ffcc;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    label {
+      text-align: left;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    input[type="text"] {
+      padding: 0.9rem;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      background: #66ffcc;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 0.9rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: #33ccaa;
+      transform: scale(1.05);
+    }
+
+    .error, .prediction {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      border-radius: 14px;
+      font-size: 1.2rem;
+      animation: slideUp 0.8s ease forwards;
+    }
+
+    .error {
+      background-color: rgba(255, 102, 102, 0.1);
+      color: #ff6666;
+      border: 1px solid #ff9999;
+    }
+
+    .prediction {
+      background-color: rgba(102, 255, 204, 0.1);
+      color: #66ffcc;
+      border: 1px solid #66ffcc;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .icon {
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1><i class="fas fa-robot icon"></i>ML Prediction Portal</h1>
+
+    {% if error %}
+    <div class="error">
+      <i class="fas fa-exclamation-triangle icon"></i>{{ error }}
+    </div>
+    {% endif %}
+
+    <form action="/predict_web" method="post">
+      <div>
+        <label for="feature1"><i class="fas fa-sliders-h icon"></i>Feature 1</label>
+        <input type="text" id="feature1" name="feature1" placeholder="Enter a number..." required />
+      </div>
+
+      <div>
+        <label for="feature2"><i class="fas fa-cogs icon"></i>Feature 2</label>
+        <input type="text" id="feature2" name="feature2" placeholder="Enter a number..." required />
+      </div>
+
+      <input type="submit" value="🔍 Predict" />
+    </form>
+
+    <!-- ... (everything above remains the same) -->
+
+{% if prediction is not none %}
+<div id="result" class="prediction">
+  <i class="fas fa-magic icon"></i>
+  <strong>Prediction:</strong> {{ prediction }}
+</div>
+
+<div class="prediction-result" style="margin-top: 1rem;">
+  <h2>🔍 Prediction Result:</h2>
+  <p><strong>{{ prediction }}</strong></p>
+</div>
+
+<script>
+  // Reveal prediction box with animation
+  window.addEventListener("DOMContentLoaded", () => {
+    const resultBox = document.getElementById("result");
+    resultBox.style.display = "block";
+  });
+</script>
+{% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+# Leave empty or add module-level constants if needed later
