@@ -232,10 +232,14 @@ Here’s what this project can evolve into:
 Too much left to do 🥲🥲🥲
 ---
 
+<img width="1395" height="851" alt="image" src="https://github.com/user-attachments/assets/3d8abd7e-1773-4c2e-ac65-ff617a5a6da0" />
+
+
 # 📚 What This Project Is
 A complete ML inference application, which loads a trained model, accepts inputs from a web form or API, makes a prediction, and returns it to the user in real-time.
 ## 📝 Summary
 
 > This project serves as a **minimal yet complete blueprint** for deploying a machine learning model as a web application using FastAPI. You can easily scale or replace the model and host the app for real users or stakeholders.
+
 
 
